@@ -1,5 +1,6 @@
 package com.sam.koinkotlinmvp.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,10 @@ class CatAdapter(var catsList: List<Cat>) : RecyclerView.Adapter<CatAdapter.CatV
             .centerCrop()
             .thumbnail()
             .into(holder.itemCatImageView)
+
+        holder.itemView.setOnClickListener {
+            holder.itemView.context.startActivity(Intent( holder.itemView.context,MainActivity::class.java))
+        }
     }
 
     // Update recyclerView's data when we get it from our API

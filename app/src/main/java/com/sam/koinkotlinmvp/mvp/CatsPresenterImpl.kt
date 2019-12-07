@@ -5,10 +5,9 @@ import com.sam.koinkotlinmvp.mvp.CatsPresenterInterface
 import com.sam.koinkotlinmvp.mvp.CatsViewInterface
 import com.sam.koinkotlinmvp.models.Cat
 
-class CatsPresenterImpl constructor(var catsRepo : CatsRepo)  :
+class CatsPresenterImpl constructor(var catsViewInterface: CatsViewInterface,var catsRepo : CatsRepo)  :
     CatsPresenterInterface {
 
- lateinit var catsViewInterface: CatsViewInterface
 
     init {
         catsRepo.topCats = this

@@ -1,19 +1,15 @@
 package com.sam.koinkotlinmvp.repository
 
 import android.util.Log
-import com.example.ainfo.utils.CatApi
+import com.sam.koinkotlinmvp.networking.CatApi
 import com.sam.koinkotlinmvp.mvp.CatsPresenterInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class CatsRepo {
+class CatsRepo( var catApi: CatApi) {
 
     lateinit var topCats: CatsPresenterInterface
-
-    val catApi by lazy {
-        CatApi.create()
-    }
 
     var disposable: Disposable? = null
 

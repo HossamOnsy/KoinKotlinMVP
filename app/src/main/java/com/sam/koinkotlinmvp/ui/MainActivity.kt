@@ -10,12 +10,13 @@ import com.sam.koinkotlinmvp.R
 import com.sam.koinkotlinmvp.models.Cat
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class MainActivity : AppCompatActivity(),
     CatsViewInterface {
 
     // this is how the koin injects the presenter inside the activity
-    val catsPresenterImpl: CatsPresenterImpl by inject()
+    val catsPresenterImpl: CatsPresenterImpl by inject{parametersOf(this)}
     val catsAdapter: CatAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity(),
         rvCats.setHasFixedSize(false)
 
 //        catsAdapter.notifyDataSetChanged()
-        catsPresenterImpl.catsViewInterface = this
         catsPresenterImpl.getCats(30)
 
     }
